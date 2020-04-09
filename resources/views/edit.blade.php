@@ -32,29 +32,29 @@
         <div class="container">
             <div class="form-group">
                 <label for="exampleInputEmail1"><h4>Name</h4></label>
-            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" required >
+            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="name" required value="{{$student->name}}">
                 
               </div>
             <div class="form-group">
               <label for="exampleInputEmail1"><h4>Email address</h4></label>
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required >
+              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" name="email" required value="{{$student->email}}">
               <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1"><h4>Phone No:</h4></label>
-              <input type="number" class="form-control" id="exampleInputPassword1" required name="phone">
+              <input type="number" class="form-control" id="exampleInputPassword1" required name="phone" value="{{$student->phone}}">
             </div>
             <br>
             <h4>Gender</h4>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="Radios" id="exampleRadios1" value="Male" checked>
+                <input class="form-check-input" type="radio" name="Radios" id="exampleRadios1" value="Male" {{  ($student->gender == 'Male' ? ' checked' : '') }}>
                 <label class="form-check-label" for="exampleRadios1">
                   Male
                 </label>
                 
             </div>
             <div class="form-check">
-                <input class="form-check-input" type="radio" name="Radios" id="exampleRadios1" value="Femail" checked>
+                <input class="form-check-input" type="radio" name="Radios" id="exampleRadios1" value="Femail" {{  ($student->gender == 'Femail' ? ' checked' : '') }}>
                 <label class="form-check-label" for="exampleRadios1">
                   Femail
                 </label>
@@ -64,18 +64,18 @@
                 <div class="col-sm-2"><h4>Country</h4></div>
                 <div class="col-auto my-1">
                   <label class="mr-sm-2 sr-only" for="inlineFormCustomSelect">Preference</label>
-                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="country" required>
-                    <option selected>Choose Country</option>
-                    <option value="India">India</option>
-                    <option value="Australia">Australia</option>
-                    <option value="USA">USA</option>
-                    <option value="China">China</option>
-                    <option value="South Africa">South Africa</option>
-                    <option value="Russia">Russia</option>
-                    <option value="UK">UK</option>
-                    <option value="Spain">Spain</option>
-                    <option value="Pakistan">Pakistan</option>
-                    <option value="Srilanka">Srilanka</option>
+                  <select class="custom-select mr-sm-2" id="inlineFormCustomSelect" name="country"  required>
+                  <option selected >Choose Country</option>
+                    <option value="India" {{ ($student->country) == 'India' ? 'selected' : '' }}>India</option>
+                    <option value="Australia" {{ ($student->country) == 'Australia' ? 'selected' : '' }}>Australia</option>
+                    <option value="USA" {{ ($student->country) == 'USA' ? 'selected' : '' }}>USA</option>
+                    <option value="China" {{ ($student->country) == 'China' ? 'selected' : '' }}>China</option>
+                    <option value="South Africa"  {{ ($student->country) == 'South Africa' ? 'selected' : '' }}>South Africa</option>
+                    <option value="Russia" {{ ($student->country) == 'Russia' ? 'selected' : '' }}>Russia</option>
+                    <option value="UK" {{ ($student->country) == 'UK' ? 'selected' : '' }}>UK</option>
+                    <option value="Spain" {{ ($student->country) == 'Spain' ? 'selected' : '' }}>Spain</option>
+                    <option value="Pakistan" {{ ($student->country) == 'Pakistan' ? 'selected' : '' }}>Pakistan</option>
+                    <option value="Srilanka" {{ ($student->country) == 'Srilanka' ? 'selected' : '' }}>Srilanka</option>
                   </select>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                 
                 <div class="col-sm-2">
                   <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Music">
+                    <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Music"{{ in_array('Music', explode(",",$student->hobbies)) ? ' checked' : '' }}>
                     <label class="form-check-label" for="gridCheck1">
                       Music
                     </label>
@@ -93,7 +93,7 @@
                 </div>
                 <div class="col-sm-2">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Cricket">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Cricket" {{ in_array('Cricket', explode(",",$student->hobbies)) ? ' checked' : '' }}>
                       <label class="form-check-label" for="gridCheck1">
                         Cricket
                       </label>
@@ -101,7 +101,7 @@
                   </div>
                   <div class="col-sm-2">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Swimming">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Swimming" {{ in_array('Swimming', explode(",",$student->hobbies)) ? ' checked' : '' }} >
                       <label class="form-check-label" for="gridCheck1">
                         Swimming
                       </label>
@@ -109,7 +109,7 @@
                   </div>
                   <div class="col-sm-2">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Dancing">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Dancing" {{ in_array('Dancing', explode(",",$student->hobbies)) ? ' checked' : '' }}>
                       <label class="form-check-label" for="gridCheck1">
                         Dancing
                       </label>
@@ -117,7 +117,7 @@
                   </div>
                   <div class="col-sm-2">
                     <div class="form-check">
-                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Reading-book">
+                      <input class="form-check-input" type="checkbox" id="gridCheck1" name="hobbies[]" value="Reading-book" {{ in_array('Reading-book', explode(",",$student->hobbies)) ? ' checked' : '' }}>
                       <label class="form-check-label" for="gridCheck1">
                         Reading Book
                       </label>
@@ -129,7 +129,7 @@
             <div class="form-row">
                 <div class="col-md-6 mb-3">
                   <label for="validationCustom03"><h4>Address</h4></label>
-                  <input type="text" class="form-control" id="validationCustom03" required name="address">
+                  <input type="text" class="form-control" id="validationCustom03" required name="address" value="{{$student->address}}">
                   <div class="invalid-feedback">
                     Please provide a valid address
                   </div>
